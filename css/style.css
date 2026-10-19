@@ -1,0 +1,134 @@
+/* Se cumple con requerimiento: Configuración global del Box Model. */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Se cumple con requerimiento: Implementación de Flexbox en Navbar para separar nombre y enlaces, y alinearlos verticalmente. */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+/* Se cumple con requerimiento: El contenedor de enlaces es un Flex Container y usa gap para un espaciado uniforme. */
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Se cumple con requerimiento: Implementación de Flexbox en el layout con contenedor padre, flex-direction y gap. */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.25rem;
+}
+
+/* Se cumple con requerimiento: Las secciones de contenido usan Flexbox, alineación vertical y gap. */
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Se cumple con requerimiento: Box Model en contenedores pequeños con padding mínimo equivalente a 20px, border y contenido aireado. */
+figure,
+article {
+  padding: 1.25rem;
+  border: 0.0625rem solid;
+}
+
+/* Se cumple con corrección del profesor: las medidas de las imágenes se manejan desde el archivo CSS y no inline en HTML. */
+img {
+  width: 21.875rem;
+}
+
+/* Se cumple con requerimiento: uso de gap en contenedores flex para separar elementos hijos. */
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Se cumple con requerimiento: Box Model para separar y dar aire al pie de página. */
+footer {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+/* Entrega 4: ajustes base mobile-first. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+header,
+nav ul {
+  flex-wrap: wrap;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+figure,
+article,
+section {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Grilla móvil: secciones apiladas. */
+.grid-inicio,
+.grid-bandas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.grid-inicio {
+  grid-template-areas:
+    "presentacion"
+    "gustos";
+}
+
+.grid-inicio > section:first-child { grid-area: presentacion; }
+.grid-inicio > section:nth-child(2) { grid-area: gustos; }
+
+.grid-bandas {
+  grid-template-areas:
+    "introduccion"
+    "limp-bizkit"
+    "pod";
+}
+
+.grid-bandas > section:first-child { grid-area: introduccion; }
+.grid-bandas > section:nth-child(2) { grid-area: limp-bizkit; }
+.grid-bandas > section:nth-child(3) { grid-area: pod; }
+
+/* Breakpoint desktop requerido. */
+@media (min-width: 1024px) {
+  .grid-inicio,
+  .grid-bandas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-inicio {
+    grid-template-areas: "presentacion gustos";
+  }
+
+  .grid-bandas {
+    grid-template-areas:
+      "introduccion introduccion"
+      "limp-bizkit pod";
+  }
+}
